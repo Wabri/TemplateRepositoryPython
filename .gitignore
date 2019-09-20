@@ -1,6 +1,6 @@
 # Metafile of editor and ide
 .idea/
-.sw*
+*.sw*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
