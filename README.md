@@ -63,12 +63,18 @@ cd TemplateProject_python
 And run the install.sh with arguments or none:
 
 ```Bash
-./install.sh --directory path_to_workspace --name project_name --repository https://github.com/github_name/repository_name.git
+./install.sh --directory path_to_workspace \
+	--name project_name \
+	--repository https://github.com/github_name/repository_name.git
 ```
 
 A simple example is:
 
 ```Bash
-./install.sh --directory ~/workspace/ --name my_awesome_new_project --repository https://github.com/wabri/AwesomePythonProject.git
+./install.sh --directory ~/workspace/ \
+	--name my_awesome_new_project \
+	--repository https://github.com/wabri/AwesomePythonProject.git
 ```
+
+![](resources/dotslashinstalldotsh.png)
 
