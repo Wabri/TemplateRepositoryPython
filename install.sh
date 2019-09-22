@@ -73,7 +73,7 @@ cp -R $TEMPLATEDIR/. $PROJECTPATH
 echo 'The name of the project is: '$NAME
 cd $PROJECTPATH
 echo '--> Removing useless files and directories'
-rm -rf .git/ venv/ install.sh
+rm -rf .git/ venv/ install.sh resources/dotslashinstalldotsh.png
 
 if [ -z "$REPOSITORY" ]; then
 	exit 0
