@@ -51,30 +51,37 @@ do
 	esac
 done
 
+echo ''
+echo '--> ./install.sh script start'
 TEMPLATEDIR=$(pwd)
 
 if [ -z "$DIRECTORY" ]; then
 	DIRECTORY=$HOME
 fi
-echo 'The directory of the project is: '$DIRECTORY
 if [ -z "$NAME" ]; then
 	NAME='new_python_project'
 fi
-echo 'The name of the project is: '$NAME
 
 # Define the real path of the project
 PROJECTPATH=$DIRECTORY/$NAME
 # Copy the template directory and create the new project
+echo '--> Creation of the project directory'
 mkdir -p $PROJECTPATH
+echo 'The directory of the project is: '$DIRECTORY
+echo '--> Coping files and directories'
 cp -R $TEMPLATEDIR/. $PROJECTPATH
+echo 'The name of the project is: '$NAME
 cd $PROJECTPATH
+echo '--> Removing useless files and directories'
 rm -rf .git/ venv/ install.sh
 
 if [ -z "$REPOSITORY" ]; then
 	exit 0
 else
+	echo '--> Setting up the git repository'
 	echo 'The remote git repository is: '$REPOSITORY
-	git init
+	git init --quiet
 	git remote add origin $REPOSITORY
 fi
+echo ''
 
