@@ -68,7 +68,7 @@ PROJECTPATH=$DIRECTORY/$NAME
 mkdir -p $PROJECTPATH
 cp -R $TEMPLATEDIR/. $PROJECTPATH
 cd $PROJECTPATH
-rm -rf .git/
+rm -rf .git/ venv/ install.sh LICENSE
 
 if [ -z "$REPOSITORY" ]; then
 	exit 0
@@ -77,3 +77,4 @@ else
 	git init
 	git remote add origin $REPOSITORY
 fi
+
