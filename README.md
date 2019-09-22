@@ -6,6 +6,8 @@ A template for python project across multiple purpose
 ```Tree
 .
 ├── CHANGELOG.md
+├── datas
+│   └── helloworld.csv
 ├── LICENSE
 ├── packages
 │   └── helloworld
@@ -29,7 +31,7 @@ A template for python project across multiple purpose
 └── VERSION
 ```
 
-**8 directories, 14 files**
+**9 directories, 15 files**
 
 ## How to set up your project
 
@@ -78,7 +80,27 @@ A simple example is:
 
 ![](resources/dotslashinstalldotsh.png)
 
-## How to use it
+## Source with environment
+
+There is inside the [scripts](scripts/development) a directory called development where can be found a [source.sh](scripts/development/source.sh) that can be use to create environment and define some useful alias. The usage is simple:
+
+```Bash
+source scripts/development/source.sh [name_of_environemnt]
+```
+
+![](resources/sourcedotsource.png)
+
+This source scripts manage to install all the dependencies and also create the **run** alias. The usage is simple:
+
+```Bash
+run package <arguments>
+```
+
+Run script try to find inside the packages directory for the package name passed, if it exists execute the **run.py** inside of it.
+
+![](resources/runhelloworld.png)
 
 
+## Contributions
 
+Every contributions are apprecieted, just create issues or fork and pull requests.
