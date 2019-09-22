@@ -31,9 +31,9 @@ A template for python project across multiple purpose
 
 **8 directories, 14 files**
 
-## How to use it
+## How to set up your project
 
-## Clone it
+### Clone it
 
 To use this template you need to clone it with a new name and remove the .git directory:
 
@@ -45,7 +45,7 @@ cd <your_name>
 rm -rf .git
 ```
 
-## Install.sh
+### Install.sh
 
 Is also possible to use the install.sh scripts and reuse this template multiple times.
 The first thing is to clone the project:
@@ -77,4 +77,8 @@ A simple example is:
 ```
 
 ![](resources/dotslashinstalldotsh.png)
+
+## How to use it
+
+
 
