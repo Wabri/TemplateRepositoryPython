@@ -68,7 +68,7 @@ PROJECTPATH=$DIRECTORY/$NAME
 mkdir -p $PROJECTPATH
 cp -R $TEMPLATEDIR/. $PROJECTPATH
 cd $PROJECTPATH
-rm -rf .git/ venv/ install.sh LICENSE
+rm -rf .git/ venv/ install.sh
 
 if [ -z "$REPOSITORY" ]; then
 	exit 0
