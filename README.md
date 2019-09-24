@@ -85,21 +85,51 @@ A simple example is:
 There is inside the [scripts](scripts/development) a directory called development where can be found a [source.sh](scripts/development/source.sh) that can be use to create environment and define some useful alias. The usage is simple:
 
 ```Bash
-source scripts/development/source.sh [name_of_environemnt]
+Usage: source ./scripts/development/source.sh [OPTION]'
+
+Mandatory arguments to long options are mandatory for short options too.'
+
+  -h, --help 			Print help page
+
+  -q, --quiet 			Quiet mode with no output'
+
+  -n, --name NAME 		Specify the name of virtual environment'
+
+  -p, --package NAME 	Specify the name of the package'
+
 ```
 
+TODO: create new screenshot, because new feature added
 ![](resources/sourcedotsource.png)
 
-This source scripts manage to install all the dependencies and also create the **run** alias. The usage is simple:
+This source scripts manage to install all the dependencies for the project and also create the **run** alias.
 
-```Bash
-run package <arguments>
-```
+The run alias have multiple pourpose:
 
-Run script try to find inside the packages directory for the package name passed, if it exists execute the **run.py** inside of it.
+1. If the package name was given in argument for the source file, then:
+
+	```Bash
+	run [ARGUMENTS]
+	```
+
+	Where ARGUMENTS are the arguments of the run.py file of the package given.
+
+2. If the package was not given in argument for the source file, then:
+
+	```Bash
+	run PACAKGE_NAME [ARGUMENTS]
+	```
+
+	Where:
+
+	* PACKAGE_NAME is the name of the package to run
+	* ARGUMENTS are the arguments of the run.py file of the package given
+
+The **run.sh** script try to find inside the packages directory for the package name passed, if it exists execute the **run.py** inside of it.
 
 ![](resources/runhelloworld.png)
 
+For more infos check out the bash code of [run.sh script](scripts/development/tools/run.sh).
 
 ## Contributions
 
