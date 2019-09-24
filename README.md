@@ -132,6 +132,21 @@ The **run.sh** script try to find inside the packages directory for the package 
 
 For more infos check out the bash code of [run.sh script](scripts/development/tools/run.sh).
 
+## Use on ide
+
+### PyCharm
+
+To use the run.sh script follow this steps:
+
+1. Select the *Run* options
+2. *Edit configuration...*
+3. *Add New Configuration*
+4. In the *Script path* just select the run.sh script inside the development/tools directory
+5. Followed by `--package NAME_PACKAGE`
+6. If the run.py of the package need more arguments just put before the package argument
+7. Give a useful name for this run configuration
+8. Done
+
 ## Contributions
 
 Every contributions are apprecieted, just create issues or fork and pull requests.
