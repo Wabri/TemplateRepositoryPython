@@ -99,7 +99,7 @@ Mandatory arguments to long options are mandatory for short options too.'
 
 ```
 
-TODO: create new screenshot, because new feature added
+***TODO: create new screenshot, because new feature added***
 ![](resources/sourcedotsource.png)
 
 This source scripts manage to install all the dependencies for the project and also create the **run** alias.
@@ -127,6 +127,7 @@ The run alias have multiple pourpose:
 
 The **run.sh** script try to find inside the packages directory for the package name passed, if it exists execute the **run.py** inside of it.
 
+***TODO: create new screenshot, because new feature added***
 ![](resources/runhelloworld.png)
 
 For more infos check out the bash code of [run.sh script](scripts/development/tools/run.sh).
