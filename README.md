@@ -78,6 +78,7 @@ A simple example is:
 	--repository https://github.com/wabri/AwesomePythonProject.git
 ```
 
+***TODO: create new screenshot, because new feature added***
 ![](resources/dotslashinstalldotsh.png)
 
 ## Source with environment
