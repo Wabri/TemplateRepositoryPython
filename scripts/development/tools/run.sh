@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Check if root of project are already set
 if [ -z "$ROOT" ]; then
