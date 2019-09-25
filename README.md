@@ -103,7 +103,12 @@ Mandatory arguments to long options are mandatory for short options too.'
 ***TODO: create new screenshot, because new feature added***
 ![](resources/sourcedotsource.png)
 
-This source scripts manage to install all the dependencies for the project and also create the **run** alias.
+This source scripts manage to install all the dependencies for the project and also create the alias:
+
+* run
+* requirement
+
+### Run alias
 
 The run alias have multiple pourpose:
 
@@ -126,12 +131,64 @@ The run alias have multiple pourpose:
 	* PACKAGE_NAME is the name of the package to run
 	* ARGUMENTS are the arguments of the run.py file of the package given
 
-The **run.sh** script try to find inside the packages directory for the package name passed, if it exists execute the **run.py** inside of it.
+
+This is the help page:
+
+```
+Usage: ./run.sh [OPTION]'
+
+Mandatory arguments to long options are mandatory for short options too.'
+
+  -h, --help 			Print help page'
+
+  -p, --package PATH    Specify the path to the package'
+
+  -m, --main PATH       Specify the path to the main file'
+```
+
+The **run.sh** script try to find inside the packages directory for the package name passed, if exists it execute the **run.py** inside of that directory.
 
 ***TODO: create new screenshot, because new feature added***
 ![](resources/runhelloworld.png)
 
 For more infos check out the bash code of [run.sh script](scripts/development/tools/run.sh).
+
+### Requirement alias
+
+The requirement alias works as pip but also update the right requirements.txt:
+
+1. Install package
+
+	```Bash
+	requirement --install NAME
+	```
+
+	Where NAME is the name of the package you need to install.
+
+2. Uninstall package
+
+This is the help page:
+	```Bash
+	requirement --uninstall NAME
+	```
+
+	Where NAME is the name of the package you need to remove.
+
+This is the help page:
+
+```
+Usage: ./pip-update-requirements.sh [OPTION]'
+
+Mandatory arguments to long options are mandatory for short options too.'
+
+  -h, --help \t\t\t Print help page'
+
+  -r, --requirements NAME\t Specify the path to the requirements file'
+
+  -u, --uninstall NAME\t\t Specify the package to remove'
+
+  -i, --install NAME\t\t Specify the package to install'
+```
 
 ## Use on ide
 
