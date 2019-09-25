@@ -6,11 +6,13 @@ if [ -z "$ROOT" ]; then
 fi
 
 _help(){
-	echo 'Usage: ./source.sh [OPTION]'
+	echo 'Usage: ./pip-update-requirements.sh [OPTION]'
 	echo ''
 	echo 'Mandatory arguments to long options are mandatory for short options too.'
 	echo ''
-	echo '  -r, --requirements NAME\t\t Specify the path to the requirements file'
+	echo '  -h, --help \t\t\t Print help page'
+	echo ''
+	echo '  -r, --requirements NAME\t Specify the path to the requirements file'
 	echo ''
 	echo '  -u, --uninstall NAME\t\t Specify the package to remove'
 	echo ''
@@ -49,20 +51,28 @@ do
 		shift
 		is_done=2
     ;;
-	*)
+    --help|-h)
 		error=1
+		shift
+    ;;
+	*)
+		error=2
+		shift
   esac
 done
 
-if [ $error -gt 0 ]
+if [ $error -gt 1 ] ;
 then
-	echo 'ERROR '$error
+	_sep_echo 'ERROR '$error
 	echo 'Need help?'
 	echo 'Try using -h or --help arguments'
+elif [ $error -eq 1 ] ;
+then
+	_help
 else
 	if [ $requirements_file = 'error' ]
 	then
-		echo 'ERROR '$error
+		_sep_echo 'ERROR '$error
 		echo 'Need help?'
 		echo 'Try using -h or --help arguments'
 	else
@@ -85,7 +95,7 @@ else
 				cp $requirements_file "$requirements_file"_backup
 				if [ ! -z $(cat $requirements_file | grep --ignore-case $requirement) ] ; then
 					delete_line=$(cat $requirements_file | grep --ignore-case $requirement)
-					sed -i "/^$delete_line\b/Id" requirements.txt
+					sed -i "/^$delete_line\b/Id" $requirements_file
 				fi
 			fi
 		fi
