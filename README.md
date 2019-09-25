@@ -167,7 +167,6 @@ The requirement alias works as pip but also update the right requirements.txt:
 
 2. Uninstall package
 
-This is the help page:
 	```Bash
 	requirement --uninstall NAME
 	```
