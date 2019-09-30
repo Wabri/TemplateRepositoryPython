@@ -21,8 +21,7 @@ _help(){
 }
 
 _sep_echo(){
-	echo '---------------------------'
-	echo $1
+	echo '-----> '$1
 }
 
 requirements_file=error
@@ -101,6 +100,3 @@ else
 		fi
 	fi
 fi
-
-_sep_echo ''
-

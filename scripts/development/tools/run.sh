@@ -19,63 +19,69 @@ _help(){
 }
 
 _sep_echo(){
-	echo '---------------------------'
-	echo $1
+	echo '-----> '$1
 }
 
 packages_path=$ROOT/packages
 main_file=error
 is_done=0
 error=0
-while [ $# -ne 0 ]
+while [ $# -ne 0 ] && [ $is_done -eq 0 ] && [ $error -eq 0 ]
 do
   key="$1"
   case $key in
 	--main|-m)
-		if [ $is_done -eq 0 ] ;
-		then
-			main_file=$2
-			shift
-			is_done=1
-		fi
+		shift
+		main_file=$1
+		is_done=1
+		shift
 	;;
     --package|-p)
 		shift
-		if [ $is_done -eq 0 ] ;
-		then
-			main_file=$packages_path/$1/run.py
-			is_done=1
-		fi
+		main_file=$packages_path/$1/run.py
+		shift
+		is_done=1
     ;;
 	--help|-h)
+		echo gesu
 		error=1
 		shift
 	;;
 	*)
+		echo cane
 		error=2
-		shift
 	;;
   esac
 done
 
-if [ $error -gt 1 ] ;
+if [ $error -gt 0 ] ;
 then
-	_sep_echo 'ERROR '$error
-	echo 'Need help?'
-	echo 'Try using -h or --help arguments'
-elif [ $error -eq 1 ] ;
-then
-	_help
+	if [ $error -eq 1 ] ;
+	then
+		_help
+	elif [ $error -eq 2 ] ;
+	then
+		_sep_echo 'ERROR '$error': Need Argument[s]'
+		echo 'Need help?'
+		echo 'Try using -h or --help arguments'
+	else
+		_sep_echo 'ERROR '$error': Uknown error'
+		echo 'Need help?'
+		echo 'Try using -h or --help arguments'
+	fi
 else
-	if [ $main_file = 'error' ]
+	if [ $main_file = 'error' ] ;
 	then
 		_sep_echo 'ERROR '$error
 		echo 'Need help?'
 		echo 'Try using -h or --help arguments'
 	else
-		_sep_echo 'Run '$main_file' with args '${@:2}
-		PYTHONPATH=$packages_path python $main_file ${@:2}
+	  if [ $# -gt 0 ]	;
+	  then
+	    _sep_echo 'Run '$main_file' with args '${@:1}
+	  else
+	    _sep_echo 'Run '$main_file' with no args'
+	  fi
+		PYTHONPATH=$packages_path python $main_file ${@:1}
 	fi
 fi
-
-_sep_echo ''
