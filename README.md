@@ -27,11 +27,12 @@ A template for python project across multiple purpose
 │       ├── README.md
 │       ├── source.sh
 │       └── tools
-│           └── run.sh
+│           ├── run.sh
+│           └── pip-update-requirements.sh
 └── VERSION
 ```
 
-**9 directories, 15 files**
+**9 directories, 16 files**
 
 ## How to set up your project
 
@@ -70,18 +71,28 @@ And run the install.sh with arguments or none:
 	--repository https://github.com/github_name/repository_name.git
 ```
 
-A simple example is:
+A simple example could be:
 
-```Bash
+```text
 ./install.sh --directory ~/workspace/ \
 	--name my_awesome_new_project \
 	--repository https://github.com/wabri/AwesomePythonProject.git
 ```
 
-***TODO: create new screenshot, because new feature added***
-![](resources/dotslashinstalldotsh.png)
+With output:
 
-## Source with environment
+```text
+-----> ./install.sh script start
+-----> Creation of the project directory
+The directory of the project is: /home/wabri/workspace/
+-----> Coping files and directories
+The name of the project is: my_awesome_new_project
+-----> Removing useless files and directories
+-----> Setting up the git repository
+The remote git repository is: https://github.com/wabri/AwesomePythonProject.git
+```
+
+## Use the source script to create the environment
 
 There is inside the [scripts](scripts/development) a directory called development where can be found a [source.sh](scripts/development/source.sh) that can be use to create environment and define some useful alias. The usage is simple:
 
@@ -90,29 +101,50 @@ Usage: source ./scripts/development/source.sh [OPTION]'
 
 Mandatory arguments to long options are mandatory for short options too.'
 
-  -h, --help 			Print help page
+  -h, --help 		Print help page
 
   -c, --cache           Use virtualenv if exists
 
-  -q, --quiet 			Quiet mode with no output'
+  -q, --quiet 		Quiet mode with no output'
 
-  -n, --name NAME 		Specify the name of virtual environment'
+  -n, --name NAME	Specify the name of virtual environment'
 
   -p, --package NAME 	Specify the name of the package'
 
 ```
-
-***TODO: create new screenshot, because new feature added***
-![](resources/sourcedotsource.png)
 
 This source scripts manage to install all the dependencies for the project and also create the alias:
 
 * run
 * requirement
 
+A simple example could be:
+
+```text
+source scripts/development/source.sh
+```
+
+With output:
+
+```text
+-----> Install python3 venv and pip dependencies
+[...]
+-----> Deactivate precedent environment
+There are not any environment activated
+-----> Setting up virtual environment
+Create environment with name /home/wabri/workspace/my_awesome_new_project/venv
+-----> Activate Environment
+The python environment is in path /home/wabri/workspace/my_awesome_new_project/venv/bin/python
+The pip environment is in path /home/wabri/workspace/my_awesome_new_project/venv/bin/pip
+-----> Upgrade pip
+[...]
+-----> Install requirements of project
+-----> Create aliases
+```
+
 ### Run alias
 
-The run alias have multiple pourpose:
+The run alias have multiple purpose:
 
 1. If the package name was given in argument for the source file, then:
 
@@ -150,8 +182,17 @@ Mandatory arguments to long options are mandatory for short options too.'
 
 The **run.sh** script try to find inside the packages directory for the package name passed, if exists it execute the **run.py** inside of that directory.
 
-***TODO: create new screenshot, because new feature added***
-![](resources/runhelloworld.png)
+A simple example could be:
+
+```text
+
+```
+
+With output:
+
+```text
+
+```
 
 For more infos check out the bash code of [run.sh script](scripts/development/tools/run.sh).
 

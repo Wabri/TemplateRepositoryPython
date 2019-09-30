@@ -36,15 +36,20 @@ do
     ;;
     --package|-p)
       shift
-      main_file=$packages_path/$1/run.py
-      shift
+      if [ $1 = '-h' ] || [ $1 = '--help' ] ;
+      then
+        error=1
+      else
+        main_file=$packages_path/$1/run.py
+        shift
+      fi
     ;;
     --help|-h)
       error=1
       shift
     ;;
     *)
-      error=2
+      error=-1
     ;;
   esac
 done
@@ -73,10 +78,11 @@ else
 	else
 	  if [ $# -gt 0 ]	;
 	  then
-	    _sep_echo 'Run '$main_file' with args '${@:1}
+	    _sep_echo 'Run '$main_file' with args '$@
+		  PYTHONPATH=$packages_path python $main_file $@
 	  else
 	    _sep_echo 'Run '$main_file' with no args'
+		  PYTHONPATH=$packages_path python $main_file
 	  fi
-		PYTHONPATH=$packages_path python $main_file ${@:1}
 	fi
 fi
