@@ -24,33 +24,28 @@ _sep_echo(){
 
 packages_path=$ROOT/packages
 main_file=error
-is_done=0
 error=0
-while [ $# -ne 0 ] && [ $is_done -eq 0 ] && [ $error -eq 0 ]
+while [ $# -ne 0 ] && [ $error -eq 0 ]
 do
   key="$1"
   case $key in
-	--main|-m)
-		shift
-		main_file=$1
-		is_done=1
-		shift
-	;;
-    --package|-p)
-		shift
-		main_file=$packages_path/$1/run.py
-		shift
-		is_done=1
+    --main|-m)
+      shift
+      main_file=$1
+      shift
     ;;
-	--help|-h)
-		echo gesu
-		error=1
-		shift
-	;;
-	*)
-		echo cane
-		error=2
-	;;
+    --package|-p)
+      shift
+      main_file=$packages_path/$1/run.py
+      shift
+    ;;
+    --help|-h)
+      error=1
+      shift
+    ;;
+    *)
+      error=2
+    ;;
   esac
 done
 

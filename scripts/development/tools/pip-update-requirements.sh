@@ -28,46 +28,64 @@ requirements_file=error
 requirement=error
 is_done=0
 error=0
-while [ $# -ne 0 ]
+while [ $# -ne 0 ] && [ $error -eq 0 ]
 do
   key="$1"
   case $key in
     --requirements|-r)
-		shift
-		requirements_file=$1
-		shift
-		error=-1
+      shift
+      requirements_file=$1
+      shift
     ;;
-	--install|-i)
-		shift
-		requirement=$1
-		shift
-		is_done=1
-	;;
+    --install|-i)
+      shift
+      requirement=$1
+      shift
+      if [ $is_done -eq 2 ] ;
+      then
+        error=3
+      else
+        is_done=1
+      fi
+    ;;
     --uninstall|-u)
-		shift
-		requirement=$1
-		shift
-		is_done=2
+      shift
+      requirement=$1
+      shift
+      if [ $is_done -eq 1 ] ;
+      then
+        error=3
+      else
+        is_done=2
+      fi
     ;;
     --help|-h)
-		error=1
-		shift
+      error=1
+      shift
     ;;
-	*)
-		error=2
-		shift
+    *)
+      error=2
+      shift
   esac
 done
 
-if [ $error -gt 1 ] ;
+if [ $error -gt 0 ] ;
 then
-	_sep_echo 'ERROR '$error
-	echo 'Need help?'
-	echo 'Try using -h or --help arguments'
-elif [ $error -eq 1 ] ;
-then
-	_help
+  if [ $error -eq 1 ] ;
+  then
+	  _help
+	elif [ $error -eq 2 ] ;
+	then
+	  _sep_echo 'ERROR '$error
+	  echo 'Need help?'
+	  echo 'Try using -h or --help arguments'
+	elif [ $error -eq 3 ] ;
+	then
+	  _sep_echo 'ERROR '$error
+	  echo 'You are trying to install and remove at the same time'
+	  echo 'Need help?'
+	  echo 'Try using -h or --help arguments'
+	fi
 else
 	if [ $requirements_file = 'error' ]
 	then

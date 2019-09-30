@@ -92,6 +92,8 @@ Mandatory arguments to long options are mandatory for short options too.'
 
   -h, --help 			Print help page
 
+  -c, --cache           Use virtualenv if exists
+
   -q, --quiet 			Quiet mode with no output'
 
   -n, --name NAME 		Specify the name of virtual environment'
