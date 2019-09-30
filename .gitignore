@@ -1,5 +1,6 @@
-# Metafile of editor and ide
+# Metafile of ide
 .idea/
+# Swapping file of vim
 *.sw*
 
 # Byte-compiled / optimized / DLL files
@@ -88,6 +89,7 @@ celerybeat-schedule
 # Environments
 .env
 .venv
+env_*
 env/
 venv/
 ENV/
@@ -106,3 +108,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Requirements file backup
+requirements.txt_backup
